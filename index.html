@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歴史プロジェクト リンク集</title>
+    <!-- Tailwind CSS CDNを読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* カスタムスタイル */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate-900: ダークな背景色 */
+            color: #e2e8f0; /* 全体的な文字色 */
+        }
+        .link-card {
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+        .link-card:hover {
+            transform: translateY(-5px); /* より目立つホバー効果 */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        /* グループヘッダーの強調線 */
+        .group-header {
+            border-bottom: 2px solid #2dd4bf; /* Tailwind teal-400 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto p-4 sm:p-8">
+        <!-- ヘッダー (より暗く、インパクトのあるデザインに) -->
+        <header class="text-center mb-12 p-8 bg-gray-800 rounded-2xl shadow-2xl">
+            <h1 class="text-5xl font-extrabold text-white mb-3 tracking-tight">
+                歴史プロジェクト リンク集
+            </h1>
+            <p class="text-xl text-teal-400 font-light">
+                提出されたすべてのウェブサイトへのアクセスポイント
+            </p>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <div id="links-container" class="space-y-16">
+            <!-- リンクグループがここにJSで挿入されます -->
+        </div>
+
+        <!-- フッター -->
+        <footer class="text-center mt-16 p-4 text-gray-400 text-sm">
+            <p>&copy; リンク集自動生成 (全21件のリンク)</p>
+        </footer>
+    </div>
+
+    <script>
+        // 投稿者ごとのリンクデータ (匿名化済み)
+        const linksData = {
+            "Aさん": [
+                { title: "歴史 (Rekishi) 1", url: "https://nano11111111.github.io/rekishi/" },
+                { title: "歴史 (Rekishi) 2", url: "https://nano11111111.github.io/rekishi2/" },
+                { title: "歴史 (Rekishi) 3", url: "https://nano11111111.github.io/rekishi3/" },
+                { title: "歴史 (Rekishi) 4", url: "https://nano11111111.github.io/rekishi4/" }
+            ],
+            "Bさん": [
+                { title: "歴史 (Rekishi) 1", url: "https://ku0000000.github.io/Rekishi/" },
+                { title: "歴史 (Rekishi) 2", url: "https://ku0000000.github.io/Rekishi2/" }
+            ],
+            "Cさん": [
+                { title: "歴史 (Rekishi) 1", url: "https://iamtay2025.github.io/Relishi/" },
+                { title: "歴史 (Rekishi) 2", url: "https://iamtay2025.github.io/rekishi2/" }
+            ],
+            "Dさん": [
+                { title: "歴史 (Rekishi) 1", url: "https://nana-0122.github.io/Rekishi/" },
+                { title: "歴史 (Rekishi) 2", url: "https://nana-0122.github.io/Rekishi2/" }
+            ],
+            "Eさん": [
+                { title: "03 55年体制と戦後日本の外交について", url: "https://ta20120.github.io/gal/" },
+                { title: "04 高度経済成長について", url: "https://ta20120.github.io/gal2/" },
+                { title: "05 高度経済成長の終焉と保守政権の動揺", url: "https://ta20120.github.io/gal3/" },
+                { title: "06 冷戦の終結と55年体制の崩壊", url: "https://ta20120.github.io/gal4/" }
+            ],
+            "Fさん": [
+                { title: "55年体制", url: "https://naga20126-dot.github.io/rekishi/" },
+                { title: "高度経済成長", url: "https://naga20126-dot.github.io/reikishi2-koudo/" },
+                { title: "冷戦", url: "https://naga20126-dot.github.io/rekishi3-reisenn/" },
+                { title: "高度経済成長と保守政権", url: "https://naga20126-dot.github.io/rekishi4-hoshuseikenn/" }
+            ],
+            "Gさん": [
+                { title: "歴史 (Rekishi) 1", url: "https://yoshi08ruru.github.io/rekishi/" },
+                { title: "歴史 (Rekishi) 2", url: "https://yoshi08ruru.github.io/rekishi2/" },
+                { title: "歴史 (Rekishi) 3", url: "https://yoshi08ruru.github.io/rekishi3/" },
+                { title: "歴史 (Rekishi) 4", url: "https://yoshi08ruru.github.io/rekishi4/" }
+            ]
+        };
+
+        const container = document.getElementById('links-container');
+
+        // データをループしてHTMLを生成
+        Object.keys(linksData).forEach(name => {
+            const group = linksData[name];
+
+            // グループコンテナ
+            const groupDiv = document.createElement('div');
+            // 背景を暗く、影を強めに
+            groupDiv.className = 'bg-gray-800 p-8 rounded-xl shadow-2xl';
+
+            // 投稿者名 (グループヘッダー)
+            const header = document.createElement('h2');
+            // 文字色をアクセントカラーに
+            header.className = 'group-header text-3xl font-bold text-teal-400 mb-8 pb-3';
+            header.textContent = name; // Aさん、Bさん、...
+            groupDiv.appendChild(header);
+
+            // リンクグリッド
+            const linkGrid = document.createElement('div');
+            linkGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6';
+
+            group.forEach(link => {
+                // リンクカード
+                const card = document.createElement('a');
+                card.href = link.url;
+                card.target = '_blank'; // 新しいタブで開く
+                card.className = 'link-card block p-6 border border-gray-700 rounded-lg bg-gray-900 hover:bg-teal-800 hover:border-teal-600 shadow-md flex flex-col justify-between';
+
+                // タイトル
+                const title = document.createElement('p');
+                // 文字色を白に
+                title.className = 'text-lg font-semibold text-white mb-2';
+                title.textContent = link.title;
+                card.appendChild(title);
+
+                // URL
+                const urlText = document.createElement('span');
+                // URLを短縮して表示
+                const displayUrl = link.url.replace(/https?:\/\//, '').split('/')[0] + '/...';
+                // 文字色を控えめに
+                urlText.className = 'text-sm text-gray-400 truncate mt-1';
+                urlText.textContent = displayUrl;
+                card.appendChild(urlText);
+
+                linkGrid.appendChild(card);
+            });
+
+            groupDiv.appendChild(linkGrid);
+            container.appendChild(groupDiv);
+        });
+    </script>
+
+</body>
+</html>
